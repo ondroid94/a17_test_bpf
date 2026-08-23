@@ -1197,7 +1197,7 @@ SYSCALL_DEFINE1(newuname, struct new_utsname __user *, name)
 		}
 	}
 	else if (cur_uid >= 1000) {
-		strlcpy(tmp.release, "5.10.248-Oxygen+", sizeof(tmp.release));
+		strlcpy(tmp.release, "5.10.248-ondroid94", sizeof(tmp.release));
 	}
 	up_read(&uts_sem);
 	if (copy_to_user(name, &tmp, sizeof(tmp)))
