@@ -97,11 +97,11 @@ jobs:
       with:
         tag_name: ${{ github.event.inputs.DEPLOY_TAG_TYPE }}-${{ github.run_number }}
         name: >-
-          a17_test_bpf ${{ github.event.inputs.DEPLOY_TAG_TYPE }} (DAVINCI)${{ env.BUILD_OK == 'true' && '' || ' - BUILD FAILED' }}
+          los_bpf ${{ github.event.inputs.DEPLOY_TAG_TYPE }} (DAVINCI)${{ env.BUILD_OK != 'true' && ' - BUILD FAILED' || '' }}
         prerelease: ${{ env.BUILD_OK != 'true' }}
         make_latest: ${{ env.BUILD_OK == 'true' }}
         body: |
-          Kernel: a17_test_bpf (LineageOS sm6150 + fake uname commits from PhoenixKernel)
+          Kernel: los_bpf (LineageOS sm6150 + fake uname commits from PhoenixKernel)
           Device: Redmi K20 / Mi 9T (davinci)
           Build: ${{ github.run_number }} - commit `${{ github.sha }}`
           Status: ${{ env.BUILD_OK == 'true' && 'SUCCESS' || 'FAILED - see error log asset below' }}
